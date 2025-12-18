@@ -33,7 +33,7 @@ export default function Login() {
                 padding: "1rem" // optional: spacing on mobile
             }}
         >
-           <div className="container bg-dark text-light rounded col-md-5">
+           <div className="container secondary primary form-deco rounded col-md-5">
                 <h2>Login</h2>
                 <form onSubmit={handleLogin}>
                     <input

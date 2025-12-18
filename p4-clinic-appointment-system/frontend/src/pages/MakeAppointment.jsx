@@ -47,7 +47,7 @@ const MakeAppointment = () => {
           padding: "1rem",
         }}
       >
-        <div className="container bg-dark text-light rounded col-md-5">
+        <div className="container form-deco secondary primary rounded col-md-5">
           <h2>Make Appointment</h2>
 
           <form onSubmit={handleRegister}>

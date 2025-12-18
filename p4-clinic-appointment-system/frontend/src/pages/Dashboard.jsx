@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuthStore from "../store/authStore";
 import axios from "axios";
 import axiosClient from "../api/axiosClient";
+import Search from "../components/Search";
 
 export default function Dashboard() {
     const logout = useAuthStore((s) => s.logout);
@@ -9,29 +10,36 @@ export default function Dashboard() {
     const [appointments, setAppointment] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const[search,setSearch]=useState("")
 
     useEffect(()=>{
         const fetchAppointment = async()=>{
             if(!user) return;
             try {
                 setLoading(true);
-                const res = await axiosClient.get(`/appointment/myappointments`);
-                console.log(res.data.appointments);
-                console.log(res.data.counts);
+                const res = await axiosClient.get(`/appointment/myappointments?search=${search}`);
                 setAppointment(res.data.appointments);
             } catch (err) {
+                
                 setError(err.response?.data?.message || err.message);
+                logout();
             }finally{
                 setLoading(false);
             }
         }
         fetchAppointment();
-    },[user])
+    },[user,search])
 
     return (
         <div>
             {/* <h1>Dashboard</h1> */}
-            <h2>Welcome {user?.name}</h2>
+            
+            <div className="d-flex justify-content-end mt-3">
+            <div className="col-md-3">
+                <Search search={search} setSearch={setSearch} />
+            </div>
+            </div>
+            <h2>Welcome {user?.name}, we care about your health.</h2>
             {loading && <p>Loadin appointment...</p> }
             {error && <p className="text-danger">{error}</p> }
 

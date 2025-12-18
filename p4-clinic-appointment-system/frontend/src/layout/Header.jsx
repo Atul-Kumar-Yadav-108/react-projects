@@ -1,13 +1,14 @@
 import React from 'react'
 import useAuthStore from '../store/authStore';
 import { NavLink } from 'react-router-dom';
+import Search from '../components/Search';
 
 const Header = () => {
     const logout = useAuthStore((s) => s.logout);
     const user = useAuthStore((s) => s.user);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to={user ? '/dashboard' : '/login'}>
                     Apka Clinic
@@ -56,13 +57,7 @@ const Header = () => {
                                     </button>
                                 </li>
                             </ul>
-
-                            <form className="d-flex ms-3">
-                                <input className="form-control me-2" type="search" placeholder="Search" />
-                                <button className="btn btn-outline-success" type="submit">
-                                    Search
-                                </button>
-                            </form>
+                                       
                         </>
                     )}
                 </div>

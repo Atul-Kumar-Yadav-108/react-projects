@@ -12,12 +12,12 @@ exports.create = async(data)=>{
     }
 }
 
-exports.getByUser = async(userId) => {
+exports.getByUser = async(userId, search) => {
   
   try{
         const result = await db.query(
-      "SELECT * FROM appointments WHERE userId = ? ORDER BY id DESC",
-      [userId])
+      "SELECT * FROM appointments WHERE userId = ? AND (doctor LIKE  ? OR date LIKE ? OR symptoms LIKE ? ) ORDER BY id DESC",
+      [userId, `%${search}%`, `%${search}%`, `%${search}%`])
       return result[0] || null;
   }catch(error){
     console.log(error);

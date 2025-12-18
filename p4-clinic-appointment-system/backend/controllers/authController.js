@@ -5,7 +5,12 @@ const apiError = require("../utils/apiError");
 exports.register = async(req, res, next)=>{
   try {
     const {name, email, password} = req.body;
-
+    console.log(`enter hua main ${name} ${email} ${password}`);
+    
+    if (!name || !email || !password) {
+        return res.status(401).send({success : false, message : "All fields are required."})
+      
+    }
     const user = await authService.resgisterUser(name, email, password);
 
     return res
@@ -19,7 +24,9 @@ exports.register = async(req, res, next)=>{
 exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-
+        if (!email || !password) {
+            return res.status(401).send({success : false, message : "All fields are required."})
+        }
         // 👇 Yeh sahi tarike se destructure karo
         const { user, token } = await authService.loginUser(email, password);
 

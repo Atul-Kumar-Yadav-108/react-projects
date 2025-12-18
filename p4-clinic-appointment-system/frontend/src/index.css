@@ -1,0 +1,35 @@
+body {
+  background-color: ##f5f7fa;
+}
+
+nav {
+  background-color: #d9ecf2 !important;
+}
+
+button {
+  background-color: #91c6bc;
+}
+
+.primary {
+  background-color: #0b3c5d; //navy blue
+}
+
+.secondary {
+  background-color: #d9ecf2; //sky blue blue
+}
+.background-color {
+  background-color: #f5f7fa; //light grey
+}
+
+.text-color {
+  color: #2f3e46; //dark grey
+}
+
+.accent-color {
+  color: #3cb371; //green
+}
+
+.form-deco {
+  padding: 2rem !important;
+  box-shadow: 0.1rem 0rem 0.3rem 0.1rem !important;
+}

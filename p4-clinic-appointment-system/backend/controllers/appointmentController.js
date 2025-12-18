@@ -25,8 +25,8 @@ exports.createAppointment = async(req, res)=>{
 
 
 exports.getMyAppointment = async(req, res)=>{
-    try {
-        const data = await appointmentModel.getByUser(req.user.id);
+    try {const search = req.query.search || '';
+        const data = await appointmentModel.getByUser(req.user.id, search);
         res.status(200).send({success : true, message : 'Fetched all appointments', counts : data.length
             , appointments : data})
     } catch (error) {

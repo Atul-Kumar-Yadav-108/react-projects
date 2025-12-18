@@ -32,7 +32,7 @@ export default function Register() {
                 padding: "1rem" // optional: spacing on mobile
             }}
         >
-           <div className="container bg-dark text-light rounded col-md-5">
+           <div className="container form-deco secondary primary rounded col-md-5">
             <h2>Register</h2>
             <form onSubmit={handleRegister}>
                 <input
